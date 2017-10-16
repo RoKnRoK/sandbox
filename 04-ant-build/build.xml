@@ -1,0 +1,76 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="AntBasics" default="dist" basedir="."
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="antlib:org.apache.ivy.ant ">
+    <description>
+        AntBasics project build file
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src"/>
+    <property name="testSrc" location="test"/>
+    <property name="build" location="bin/classes"/>
+    <property name="dist" location="bin"/>
+    <property name="ivyLibs" location="lib"/>
+
+    <!-- ivy start -->
+    <!-- install ivy -->
+    <target name="ivyInstall" description="Install ivy">
+        <mkdir dir="${user.home}/.ant/lib"/>
+        <get dest="${user.home}/.ant/lib/ivy.jar"
+             src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0-rc1/ivy-2.4.0-rc1.jar"/>
+    </target>
+    <!-- ivy to get dependencies and copy to project lib folder automatically -->
+    <target name="ivyResolve" depends="ivyInstall" description="retrieve dependencies with ivy">
+        <ivy:retrieve/>
+    </target>
+
+
+    <target name="init" depends="ivyResolve">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+    </target>
+
+
+
+
+    <target name="copyDependencies" depends="init" description="generate the distribution">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}/build/libs"/>
+
+        <!-- Copy all dependencies to lib folder -->
+        <copy todir="${dist}/build/libs">
+            <fileset dir="${ivyLibs}" includes="**"/>
+        </copy>
+    </target>
+
+    <path id="compile.classpath">
+        <fileset dir="${dist}/build/libs" includes="**/*.jar"/>
+    </path>
+    <target name="compile" depends="copyDependencies" description="compile the source ">
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac srcdir="${src}" destdir="${build}" classpathref="compile.classpath"/>
+    </target>
+
+    <target name="jar" depends="compile" description="Generate jar">
+
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}/build"/>
+        <manifestclasspath property="jar.classpath" jarfile="${dist}/build/AntBasics.jar">
+            <classpath refid="compile.classpath"/>
+        </manifestclasspath>
+        <!-- Put everything in ${build} into the AntBasics.jar file -->
+        <jar jarfile="${dist}/build/AntBasics.jar" basedir="${build}">
+            <manifest>
+                <attribute name="Main-Class" value="com.rok.sandbox.mod04.restaurant.Restaurant"/>
+                <attribute name="Class-Path" value="${jar.classpath}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean" description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+        <delete dir="${ivyLibs}"/>
+    </target>
+</project>

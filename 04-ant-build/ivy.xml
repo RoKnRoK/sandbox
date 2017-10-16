@@ -1,0 +1,10 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="AntBasics" />
+
+    <configurations defaultconfmapping="default"/>
+
+    <dependencies>
+        <dependency org="org.apache.commons" name="commons-lang3" rev="3.5"/>
+        <dependency org="junit" name="junit" rev="4.4"/>
+    </dependencies>
+</ivy-module>
