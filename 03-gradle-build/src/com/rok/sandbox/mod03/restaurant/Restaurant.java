@@ -1,11 +1,11 @@
-package com.rok.sandbox.mod02.restaurant;
+package com.rok.sandbox.mod03.restaurant;
 
-import com.rok.sandbox.mod02.restaurant.dao.Tables;
-import com.rok.sandbox.mod02.restaurant.dao.VisitorDao;
-import com.rok.sandbox.mod02.restaurant.dao.VisitorsList;
-import com.rok.sandbox.mod02.restaurant.model.Table;
-import com.rok.sandbox.mod02.restaurant.model.Visitor;
-import com.rok.sandbox.mod02.restaurant.dao.TableDao;
+import com.rok.sandbox.mod03.restaurant.dao.Tables;
+import com.rok.sandbox.mod03.restaurant.dao.VisitorDao;
+import com.rok.sandbox.mod03.restaurant.dao.VisitorsList;
+import com.rok.sandbox.mod03.restaurant.model.Table;
+import com.rok.sandbox.mod03.restaurant.model.Visitor;
+import com.rok.sandbox.mod03.restaurant.dao.TableDao;
 
 import java.util.List;
 

@@ -1,0 +1,33 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+sourceSets {
+    main.java.srcDir 'src/'
+    test.java.srcDir 'test/'
+}
+
+dependencies {
+    testCompile 'junit:junit:4.4'
+    compile 'org.apache.commons:commons-lang3:3.5'
+}
+
+jar {
+    manifest.attributes(
+            'Class-Path': configurations.compile.collect { 'lib/'+it.getName() }.join(' '),
+            'Main-Class': 'MyLibrary')
+}
+
+task copyLibs(type: Copy) {
+    into "$buildDir/libs/lib"
+    from configurations.compile
+}
+
+build.dependsOn(copyLibs)
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
