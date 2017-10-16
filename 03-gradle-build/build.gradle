@@ -17,7 +17,7 @@ dependencies {
 jar {
     manifest.attributes(
             'Class-Path': configurations.compile.collect { 'lib/'+it.getName() }.join(' '),
-            'Main-Class': 'MyLibrary')
+            'Main-Class': 'Restaurant')
 }
 
 task copyLibs(type: Copy) {

@@ -24,7 +24,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.MavenBasic.tutorial.MyLibrary</mainClass>
+                            <mainClass>com.rok.sandbox.mod02.restaurant.Restaurant</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
