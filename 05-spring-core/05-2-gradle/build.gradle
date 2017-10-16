@@ -1,0 +1,77 @@
+buildscript {
+    ext.depManagementVersion = '1.0.3.RELEASE'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath ("io.spring.gradle:dependency-management-plugin:${depManagementVersion}")
+    }
+}
+allprojects {
+    group 'com.rok.sandbox.mod052'
+    version '1.0-SNAPSHOT'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    ext.springVersion = '4.3.5.RELEASE'
+
+    dependencyManagement {
+        imports {
+            mavenBom 'io.spring.platform:platform-bom:1.1.2.RELEASE'
+        }
+    }
+    dependencies {
+        testCompile 'junit:junit:4.12'
+        compile 'org.apache.commons:commons-lang3:3.5'
+        compile "org.springframework:spring-core:${springVersion}"
+        compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+
+        compile "org.springframework:spring-beans:${springVersion}"
+        compile "org.springframework:spring-context:${springVersion}"
+        testCompile "org.springframework:spring-test:${springVersion}"
+    }
+
+    jar {
+        manifest.attributes(
+                'Class-Path': configurations.compile.collect { 'lib/'+it.getName() }.join(' '),
+                'Main-Class': 'com.rok.sandbox.mod052.restaurant.Restaurant')
+    }
+
+    task copyLibs(type: Copy) {
+        into "$buildDir/libs/lib"
+        from configurations.compile
+    }
+
+    build.dependsOn(copyLibs)
+}
+
+
+
+/*
+jar {
+    manifest.attributes(
+            'Class-Path': configurations.compile.collect { 'lib/'+it.getName() }.join(' '),
+            'Main-Class': 'org.totalbeginner.tutorial.MyLibrary')
+}
+
+task copyLibs(type: Copy) {
+    into "$buildDir/libs/lib"
+    from configurations.compile
+}
+
+build.dependsOn(copyLibs)*/
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}

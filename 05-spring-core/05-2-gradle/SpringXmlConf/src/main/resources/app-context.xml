@@ -1,0 +1,60 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="restaurant" class="com.rok.sandbox.mod052.restaurant.Restaurant">
+        <property name="name" value="Happy Whale"/>
+        <property name="visitorsList" ref="visitorsList"/>
+        <property name="tables" ref="tables"/>
+
+    </bean>
+
+    <bean id="visitorsList" class="com.rok.sandbox.mod052.restaurant.dao.VisitorsList">
+        <property name="people">
+            <map>
+                <entry key="jim" value-ref="jim"/>
+                <entry key="sue" value-ref="sue"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="tables" class="com.rok.sandbox.mod052.restaurant.dao.Tables">
+        <property name="tables">
+            <list>
+                <ref bean="table1"/>
+                <ref bean="table2"/>
+                <ref bean="table3"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- Books -->
+    <bean id="table1" class="com.rok.sandbox.mod052.restaurant.model.Table">
+        <property name="number" value="1"/>
+        <property name="description" value="For two persons"/>
+    </bean>
+
+    <bean id="table2" class="com.rok.sandbox.mod052.restaurant.model.Table">
+        <property name="number" value="2"/>
+        <property name="description" value="Massive wooden &amp; steel table"/>
+    </bean>
+
+    <bean id="table3" class="com.rok.sandbox.mod052.restaurant.model.Table">
+        <property name="number" value="2"/>
+        <property name="description" value="Billiards table"/>
+    </bean>
+
+    <!--People-->
+    <bean id="jim" class="com.rok.sandbox.mod052.restaurant.model.Visitor">
+        <property name="name" value="Jim"/>
+    </bean>
+
+    <bean id="sue" class="com.rok.sandbox.mod052.restaurant.model.Visitor">
+        <property name="name" value="Sue"/>
+    </bean>
+
+</beans>

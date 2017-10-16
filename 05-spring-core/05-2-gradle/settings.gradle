@@ -1,0 +1,4 @@
+rootProject.name = 'SpringCoreBasics'
+
+include "SpringJavaConf"
+include "SpringXmlConf"
