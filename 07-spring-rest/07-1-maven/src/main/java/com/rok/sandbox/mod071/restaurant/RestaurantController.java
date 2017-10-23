@@ -67,7 +67,7 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/tables/add", method = RequestMethod.POST)
-    public String addTable(@RequestParam(value = "title") int number) {
+    public String addTable(@RequestParam(value = "number") int number) {
         Table newTable = new Table(number);
         restaurant.addTable(newTable);
         return "Table #" + number + " created";
