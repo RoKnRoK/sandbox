@@ -1,0 +1,33 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+ext.springVersion = '4.3.5.RELEASE'
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile "org.springframework:spring-core:${springVersion}"
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+
+    compile "org.springframework:spring-web:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+
+war {
+    archiveName 'springRestBasics.war'
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
