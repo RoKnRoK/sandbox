@@ -1,6 +1,6 @@
-package com.rok.sandbox.mod071.restaurant.dao;
+package com.rok.sandbox.mod072.restaurant.dao;
 
-import com.rok.sandbox.mod071.restaurant.model.Visitor;
+import com.rok.sandbox.mod072.restaurant.model.Visitor;
 
 import java.util.List;
 

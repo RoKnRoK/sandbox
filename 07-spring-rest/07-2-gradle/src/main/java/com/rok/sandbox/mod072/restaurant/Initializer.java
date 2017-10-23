@@ -1,4 +1,4 @@
-package com.rok.sandbox.mod071.restaurant;
+package com.rok.sandbox.mod072.restaurant;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

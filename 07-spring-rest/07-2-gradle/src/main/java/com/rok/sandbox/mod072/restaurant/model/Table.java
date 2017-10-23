@@ -1,4 +1,4 @@
-package com.rok.sandbox.mod071.restaurant.model;
+package com.rok.sandbox.mod072.restaurant.model;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 

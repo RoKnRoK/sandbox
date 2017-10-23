@@ -1,9 +1,9 @@
-package com.rok.sandbox.mod071.restaurant.model;
+package com.rok.sandbox.mod072.restaurant.model;
 
-import com.rok.sandbox.mod071.restaurant.dao.TableDao;
-import com.rok.sandbox.mod071.restaurant.dao.Tables;
-import com.rok.sandbox.mod071.restaurant.dao.VisitorDao;
-import com.rok.sandbox.mod071.restaurant.dao.VisitorsList;
+import com.rok.sandbox.mod072.restaurant.dao.TableDao;
+import com.rok.sandbox.mod072.restaurant.dao.Tables;
+import com.rok.sandbox.mod072.restaurant.dao.VisitorDao;
+import com.rok.sandbox.mod072.restaurant.dao.VisitorsList;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

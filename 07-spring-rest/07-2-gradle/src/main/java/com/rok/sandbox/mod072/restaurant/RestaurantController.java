@@ -1,4 +1,4 @@
-package com.rok.sandbox.mod071.restaurant;
+package com.rok.sandbox.mod072.restaurant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.MimeTypeUtils;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.rok.sandbox.mod071.restaurant.model.Table;
-import com.rok.sandbox.mod071.restaurant.model.Restaurant;
-import com.rok.sandbox.mod071.restaurant.model.Visitor;
+import com.rok.sandbox.mod072.restaurant.model.Table;
+import com.rok.sandbox.mod072.restaurant.model.Restaurant;
+import com.rok.sandbox.mod072.restaurant.model.Visitor;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
